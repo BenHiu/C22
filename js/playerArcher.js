@@ -1,0 +1,26 @@
+class PlayerArcher{
+    constructor(x,y,w,h){
+        const options={
+            isStatic:true,
+        };
+        this.body=Matter.Bodies.rectangle(x,y,w,h,options);
+        this.width=w;
+        this.height=h;
+        this.collapse=false;
+        this.image=loadImage("assets/playerArcher.png");
+
+        World.add(world,this.body);
+
+        Matter.Body.setAngle(this.body,-90);
+    }
+    display(){
+        var pos=this.body.position;
+        var angle=this.body.angle;
+        console.log(angle)
+        push(); 
+        translate(pos.x, pos.y); 
+        rotate(angle); imageMode(CENTER); 
+        image(this.image, 0, 0, this.width, this.height); 
+        pop();
+    }
+}
